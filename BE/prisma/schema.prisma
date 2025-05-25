@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model flashcards {
+  id                Int     @id @default(autoincrement())
+  topic_id          Int
+  vocabulary        String  @db.VarChar(255)
+  phonetics         String? @db.VarChar(255)
+  vietnamese_meaning String? @db.VarChar(255)
+  description       String?
+  example           String?
+  topics            topics  @relation(fields: [topic_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([topic_id], map: "idx_flashcards_topic")
+}
+
+model grammar_lessons {
+  id        Int     @id @default(autoincrement())
+  title     String  @db.VarChar(255)
+  content   String
+  video_url String? @db.VarChar(255)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model questions {
+  id                   Int                    @id @default(autoincrement())
+  content_type         String                 @db.VarChar(10)
+  content_id           Int
+  content_name         String?                @db.VarChar(255)
+  question_text        String
+  option1              String                 @db.VarChar(255)
+  option2              String                 @db.VarChar(255)
+  option3              String                 @db.VarChar(255)
+  option4              String                 @db.VarChar(255)
+  correct_answer       Int                    @db.SmallInt
+  quiz_attempt_answers quiz_attempt_answers[]
+
+  @@index([content_type, content_id], map: "idx_questions_content")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model quiz_attempt_answers {
+  attempt_id      Int
+  question_id     Int
+  selected_option Int           @db.SmallInt
+  quiz_attempts   quiz_attempts @relation(fields: [attempt_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  questions       questions     @relation(fields: [question_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([attempt_id, question_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model quiz_attempts {
+  id                   Int                    @id @default(autoincrement())
+  user_id              Int
+  content_type         String                 @db.VarChar(10)
+  content_id           Int
+  submitted_at         DateTime?              @default(now()) @db.Timestamptz(6)
+  score                Int?                    @db.SmallInt
+  quiz_attempt_answers quiz_attempt_answers[]
+  users                users                  @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id], map: "idx_quiz_attempts_user")
+}
+
+model topics {
+  id          Int          @id @default(autoincrement())
+  name        String       @db.VarChar(255)
+  description String?
+  flashcards  flashcards[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model user_progress {
+  user_id      Int
+  content_type String    @db.VarChar(10)
+  content_id   Int
+  completed_at DateTime? @default(now()) @db.Timestamptz(6)
+  users        users     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([user_id, content_type, content_id])
+  @@index([user_id], map: "idx_user_progress")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model users {
+  id                    Int                     @id @default(autoincrement())
+  email                 String                  @unique @db.VarChar(255)
+  display_name          String                  @db.VarChar(255)
+  password_hash         String                  @db.VarChar(255)
+  registered_at         DateTime?               @default(now()) @db.Timestamptz(6)
+  role                  String                  @db.VarChar(10)
+  quiz_attempts         quiz_attempts[]
+  user_progress         user_progress[]
+  speaking_practices    speaking_practice_history[]
+}
+
+model speaking_practice_history {
+  id                Int       @id @default(autoincrement())
+  user_id           Int
+  context           String?
+  tone              String?
+  audience          String?
+  content           String
+  ai_response       String
+  created_at        DateTime  @default(now()) @db.Timestamptz(6)
+  users             users     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  
+  @@index([user_id], map: "idx_speaking_practice_user")
+}

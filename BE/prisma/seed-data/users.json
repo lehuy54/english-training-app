@@ -1,0 +1,70 @@
+{
+  "admin": {
+    "email": "admin@example.com",
+    "display_name": "Admin User",
+    "password_hash": "admin123",
+    "role": "admin"
+  },    
+  "users": [
+    {
+      "email": "user1@example.com",
+      "display_name": "Nguyễn Văn A",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user2@example.com",
+      "display_name": "Trần Thị B",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user3@example.com",
+      "display_name": "Lê Văn C",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user4@example.com",
+      "display_name": "Phạm Thị D",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user5@example.com",
+      "display_name": "Hoàng Văn E",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user6@example.com",
+      "display_name": "Vũ Thị F",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user7@example.com",
+      "display_name": "Đặng Văn G",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user8@example.com",
+      "display_name": "Trịnh Thị H",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user9@example.com",
+      "display_name": "Ngô Văn I",
+      "password_hash": "user123",
+      "role": "user"
+    },
+    {
+      "email": "user10@example.com",
+      "display_name": "Bùi Thị K",
+      "password_hash": "user123",
+      "role": "user"
+    }
+  ]
+}

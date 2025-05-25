@@ -1,0 +1,422 @@
+[
+  {
+    "topic_name": "Basic Vocabulary",
+    "vocabulary": "Hello",
+    "phonetics": "/həˈloʊ/",
+    "vietnamese_meaning": "Xin chào",
+    "description": "A common greeting used when meeting someone or answering the phone",
+    "example": "Hello, how are you today?"
+  },
+  {
+    "topic_name": "Basic Vocabulary",
+    "vocabulary": "Goodbye",
+    "phonetics": "/ˌɡʊdˈbaɪ/",
+    "vietnamese_meaning": "Tạm biệt",
+    "description": "A parting phrase used when leaving someone or ending a conversation",
+    "example": "I have to go now, goodbye!"
+  },
+  {
+    "topic_name": "Basic Vocabulary",
+    "vocabulary": "Thank you",
+    "phonetics": "/ˈθæŋk juː/",
+    "vietnamese_meaning": "Cảm ơn",
+    "description": "An expression of gratitude or appreciation",
+    "example": "Thank you for helping me with my homework."
+  },
+  {
+    "topic_name": "Travel and Tourism",
+    "vocabulary": "Passport",
+    "phonetics": "/ˈpæspɔːrt/",
+    "vietnamese_meaning": "Hộ chiếu",
+    "description": "An official document issued by a government that certifies identity and citizenship",
+    "example": "Don't forget to bring your passport when traveling internationally."
+  },
+  {
+    "topic_name": "Travel and Tourism",
+    "vocabulary": "Itinerary",
+    "phonetics": "/aɪˈtɪnərəri/",
+    "vietnamese_meaning": "Lịch trình",
+    "description": "A detailed plan for a journey, including routes and destinations",
+    "example": "Our itinerary includes three days in Paris and two in Rome."
+  },
+  {
+    "topic_name": "Travel and Tourism",
+    "vocabulary": "Accommodation",
+    "phonetics": "/əˌkɒməˈdeɪʃn/",
+    "vietnamese_meaning": "Chỗ ở",
+    "description": "A place to stay, such as a hotel or apartment",
+    "example": "We need to book accommodation for our vacation."
+  },
+  {
+    "topic_name": "Business English",
+    "vocabulary": "Deadline",
+    "phonetics": "/ˈdedlaɪn/",
+    "vietnamese_meaning": "Thời hạn",
+    "description": "A time or date by which something must be completed",
+    "example": "The deadline for this project is next Friday."
+  },
+  {
+    "topic_name": "Business English",
+    "vocabulary": "Negotiate",
+    "phonetics": "/nɪˈɡoʊʃieɪt/",
+    "vietnamese_meaning": "Đàm phán",
+    "description": "To discuss and reach an agreement through compromise",
+    "example": "We need to negotiate better terms in this contract."
+  },
+  {
+    "topic_name": "Business English",
+    "vocabulary": "Quarterly",
+    "phonetics": "/ˈkwɔːrtərli/",
+    "vietnamese_meaning": "Hàng quý",
+    "description": "Occurring every three months",
+    "example": "The company publishes quarterly financial reports."
+  },
+  {
+    "topic_name": "Academic English",
+    "vocabulary": "Hypothesis",
+    "phonetics": "/haɪˈpɒθəsɪs/",
+    "vietnamese_meaning": "Giả thuyết",
+    "description": "A proposed explanation for a phenomenon that can be tested",
+    "example": "The researcher developed a hypothesis about the relationship between sleep and memory."
+  },
+  {
+    "topic_name": "Academic English",
+    "vocabulary": "Analyze",
+    "phonetics": "/ˈænəlaɪz/",
+    "vietnamese_meaning": "Phân tích",
+    "description": "To examine methodically and in detail",
+    "example": "Students were asked to analyze the poem's structure and themes."
+  },
+  {
+    "topic_name": "Academic English",
+    "vocabulary": "Bibliography",
+    "phonetics": "/ˌbɪbliˈɒɡrəfi/",
+    "vietnamese_meaning": "Danh mục tài liệu tham khảo",
+    "description": "A list of sources referenced in a research paper or book",
+    "example": "You must include a bibliography at the end of your thesis."
+  },
+  {
+    "topic_name": "Health and Medicine",
+    "vocabulary": "Diagnosis",
+    "phonetics": "/ˌdaɪəɡˈnoʊsɪs/",
+    "vietnamese_meaning": "Chẩn đoán",
+    "description": "The identification of an illness or condition through examination",
+    "example": "The doctor made a diagnosis after reviewing the test results."
+  },
+  {
+    "topic_name": "Health and Medicine",
+    "vocabulary": "Prescription",
+    "phonetics": "/prɪˈskrɪpʃən/",
+    "vietnamese_meaning": "Đơn thuốc",
+    "description": "A written direction for the preparation and use of medicine",
+    "example": "The pharmacist filled my prescription for antibiotics."
+  },
+  {
+    "topic_name": "Health and Medicine",
+    "vocabulary": "Recovery",
+    "phonetics": "/rɪˈkʌvəri/",
+    "vietnamese_meaning": "Hồi phục",
+    "description": "The process of returning to health after illness or injury",
+    "example": "His recovery from surgery took about six weeks."
+  },
+  {
+    "topic_name": "Technology and Digital Life",
+    "vocabulary": "Algorithm",
+    "phonetics": "/ˈælɡərɪðəm/",
+    "vietnamese_meaning": "Thuật toán",
+    "description": "A process or set of rules followed in calculations or problem-solving operations",
+    "example": "Search engines use complex algorithms to deliver relevant results."
+  },
+  {
+    "topic_name": "Technology and Digital Life",
+    "vocabulary": "Bandwidth",
+    "phonetics": "/ˈbændwɪdθ/",
+    "vietnamese_meaning": "Băng thông",
+    "description": "The amount of data that can be transmitted in a fixed amount of time",
+    "example": "Streaming videos requires high bandwidth."
+  },
+  {
+    "topic_name": "Technology and Digital Life",
+    "vocabulary": "Cybersecurity",
+    "phonetics": "/ˌsaɪbərsiˈkjʊrəti/",
+    "vietnamese_meaning": "An ninh mạng",
+    "description": "The practice of protecting systems and networks from digital attacks",
+    "example": "Companies invest heavily in cybersecurity to protect customer data."
+  },
+  {
+    "topic_name": "Environment and Sustainability",
+    "vocabulary": "Biodiversity",
+    "phonetics": "/ˌbaɪoʊdaɪˈvɜːrsəti/",
+    "vietnamese_meaning": "Đa dạng sinh học",
+    "description": "The variety of plant and animal life in a particular habitat",
+    "example": "Rainforests are known for their incredible biodiversity."
+  },
+  {
+    "topic_name": "Environment and Sustainability",
+    "vocabulary": "Carbon Footprint",
+    "phonetics": "/ˈkɑːrbən ˈfʊtprɪnt/",
+    "vietnamese_meaning": "Dấu chân carbon",
+    "description": "The amount of carbon dioxide released into the atmosphere due to human activities",
+    "example": "Reducing your carbon footprint helps combat climate change."
+  },
+  {
+    "topic_name": "Environment and Sustainability",
+    "vocabulary": "Renewable Energy",
+    "phonetics": "/rɪˈnjuːəbl ˈenərdʒi/",
+    "vietnamese_meaning": "Năng lượng tái tạo",
+    "description": "Energy from sources that naturally replenish, such as sunlight or wind",
+    "example": "Solar panels harness renewable energy from the sun."
+  },
+  {
+    "topic_name": "Arts and Culture",
+    "vocabulary": "Masterpiece",
+    "phonetics": "/ˈmæstərpiːs/",
+    "vietnamese_meaning": "Kiệt tác",
+    "description": "A work of outstanding artistry, skill, or workmanship",
+    "example": "The Mona Lisa is considered Leonardo da Vinci's masterpiece."
+  },
+  {
+    "topic_name": "Arts and Culture",
+    "vocabulary": "Exhibition",
+    "phonetics": "/ˌeksɪˈbɪʃən/",
+    "vietnamese_meaning": "Triển lãm",
+    "description": "A public display of art, products, or skills",
+    "example": "The museum is hosting an exhibition of contemporary art."
+  },
+  {
+    "topic_name": "Arts and Culture",
+    "vocabulary": "Heritage",
+    "phonetics": "/ˈherɪtɪdʒ/",
+    "vietnamese_meaning": "Di sản",
+    "description": "The traditions, achievements, and beliefs passed down from previous generations",
+    "example": "Traditional dances are an important part of cultural heritage."
+  },
+  {
+    "topic_name": "Food and Cuisine",
+    "vocabulary": "Ingredient",
+    "phonetics": "/ɪnˈɡriːdiənt/",
+    "vietnamese_meaning": "Nguyên liệu",
+    "description": "A component or element used in cooking a dish",
+    "example": "Flour is a key ingredient in bread."
+  },
+  {
+    "topic_name": "Food and Cuisine",
+    "vocabulary": "Appetizer",
+    "phonetics": "/ˈæpɪtaɪzər/",
+    "vietnamese_meaning": "Món khai vị",
+    "description": "A small dish served before a main meal",
+    "example": "We ordered bruschetta as an appetizer."
+  },
+  {
+    "topic_name": "Food and Cuisine",
+    "vocabulary": "Cuisine",
+    "phonetics": "/kwɪˈziːn/",
+    "vietnamese_meaning": "Ẩm thực",
+    "description": "A style of cooking characterized by distinctive ingredients and techniques",
+    "example": "Thai cuisine is known for its spicy and aromatic flavors."
+  },
+  {
+    "topic_name": "Sports and Recreation",
+    "vocabulary": "Tournament",
+    "phonetics": "/ˈtʊrnəmənt/",
+    "vietnamese_meaning": "Giải đấu",
+    "description": "A competition involving a series of matches between multiple participants",
+    "example": "The tennis tournament will last for two weeks."
+  },
+  {
+    "topic_name": "Sports and Recreation",
+    "vocabulary": "Endurance",
+    "phonetics": "/ɪnˈdʊrəns/",
+    "vietnamese_meaning": "Sức bền",
+    "description": "The ability to sustain prolonged physical or mental effort",
+    "example": "Marathon runners need great endurance."
+  },
+  {
+    "topic_name": "Sports and Recreation",
+    "vocabulary": "Championship",
+    "phonetics": "/ˈtʃæmpiənʃɪp/",
+    "vietnamese_meaning": "Giải vô địch",
+    "description": "A competition to determine the champion in a sport or game",
+    "example": "They won the national championship three years in a row."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Climate Change",
+    "phonetics": "/ˈklaɪmət tʃeɪndʒ/",
+    "example": "Climate change is affecting our planet's temperature."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Renewable Energy",
+    "phonetics": "/rɪˈnjuːəbl ˈenədʒi/",
+    "example": "Solar power is a form of renewable energy."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Pollution",
+    "phonetics": "/pəˈluːʃn/",
+    "example": "Air pollution is a major environmental concern."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Ecosystem",
+    "phonetics": "/ˈiːkəʊsɪstəm/",
+    "example": "The rainforest is a complex ecosystem."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Sustainability",
+    "phonetics": "/səˌsteɪnəˈbɪləti/",
+    "example": "We need to focus on sustainability practices."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Biodiversity",
+    "phonetics": "/ˌbaɪəʊdaɪˈvɜːsəti/",
+    "example": "Protecting biodiversity is crucial for our planet."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Conservation",
+    "phonetics": "/ˌkɒnsəˈveɪʃn/",
+    "example": "Wildlife conservation is important for endangered species."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Carbon Footprint",
+    "phonetics": "/ˈkɑːbən ˈfʊtprɪnt/",
+    "example": "We should try to reduce our carbon footprint."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Recycling",
+    "phonetics": "/ˌriːˈsaɪklɪŋ/",
+    "example": "Recycling helps reduce waste in landfills."
+  },
+  {
+    "topic_name": "Environment",
+    "vocabulary": "Global Warming",
+    "phonetics": "/ˈɡləʊbl ˈwɔːmɪŋ/",
+    "example": "Global warming is causing ice caps to melt."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Siblings",
+    "phonetics": "/ˈsɪblɪŋz/",
+    "example": "I have two siblings, a brother and a sister."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Parents",
+    "phonetics": "/ˈpeərənts/",
+    "example": "My parents live in the countryside."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Grandparents",
+    "phonetics": "/ˈɡrænpeərənts/",
+    "example": "My grandparents tell wonderful stories."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Cousins",
+    "phonetics": "/ˈkʌznz/",
+    "example": "I have many cousins on my mother's side."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Relatives",
+    "phonetics": "/ˈrelətɪvz/",
+    "example": "We're visiting our relatives this weekend."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "In-laws",
+    "phonetics": "/ˈɪn lɔːz/",
+    "example": "My in-laws are coming for dinner."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Ancestors",
+    "phonetics": "/ˈænsestəz/",
+    "example": "Our ancestors came from Europe."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Descendants",
+    "phonetics": "/dɪˈsendənts/",
+    "example": "Future descendants will inherit this land."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Spouse",
+    "phonetics": "/spaʊs/",
+    "example": "My spouse and I have been married for 10 years."
+  },
+  {
+    "topic_name": "Family",
+    "vocabulary": "Offspring",
+    "phonetics": "/ˈɒfsprɪŋ/",
+    "example": "They have three offspring, all girls."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Beverage",
+    "phonetics": "/ˈbevərɪdʒ/",
+    "example": "Would you like a cold beverage?"
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Refreshment",
+    "phonetics": "/rɪˈfreʃmənt/",
+    "example": "We served light refreshments at the meeting."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Cocktail",
+    "phonetics": "/ˈkɒkteɪl/",
+    "example": "She ordered a tropical cocktail."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Infusion",
+    "phonetics": "/ɪnˈfjuːʒn/",
+    "example": "This herbal infusion is very soothing."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Brew",
+    "phonetics": "/bruː/",
+    "example": "He makes his own craft brew."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Elixir",
+    "phonetics": "/ɪˈlɪksə/",
+    "example": "This elixir is made from natural ingredients."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Nectar",
+    "phonetics": "/ˈnektə/",
+    "example": "The juice was as sweet as nectar."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Potion",
+    "phonetics": "/ˈpəʊʃn/",
+    "example": "The wizard prepared a magical potion."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Tonic",
+    "phonetics": "/ˈtɒnɪk/",
+    "example": "This tonic water is very refreshing."
+  },
+  {
+    "topic_name": "Drink",
+    "vocabulary": "Libation",
+    "phonetics": "/laɪˈbeɪʃn/",
+    "example": "They offered libations to the gods."
+  }
+]

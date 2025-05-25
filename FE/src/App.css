@@ -1,0 +1,90 @@
+/* Custom navigation divider styling */
+.nav-divider {
+  color: #aaa;
+  margin: 0 0.5rem;
+  font-weight: 300;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+}
+
+/* Flashcard layout styling */
+.flashcards-container {
+  min-height: 450px;
+  padding: 0 60px;
+}
+
+.flashcard-nav-button button {
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcard-nav-button button:hover:not(:disabled) {
+  background-color: #f8f9fa;
+  transform: scale(1.1);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.flashcard-wrapper {
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .flashcards-container {
+    padding: 0 40px;
+  }
+  
+  .flashcard-nav-button button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* Grammar lesson styling */
+.grammar-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.grammar-content p {
+  margin-bottom: 1.25rem;
+}
+
+.grammar-video-container {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 0.375rem;
+  overflow: hidden;
+  margin: 0 auto 2rem auto;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .grammar-video-container {
+    max-width: 100% !important;
+  }
+}
+
+/* Ensure navigation links have proper spacing */
+.navbar .nav-link {
+  padding: 0.5rem 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #0d6efd;
+}
+
+/* Make the navbar look better on small screens */
+@media (max-width: 767.98px) {
+  .navbar-collapse .nav-link {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .navbar-collapse .nav-link:last-child {
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Basic Vocabulary",
+    "description": "Essential everyday words and phrases for beginners in English, covering greetings, introductions, and common expressions used in daily conversations."
+  },
+  {
+    "name": "Travel and Tourism",
+    "description": "Comprehensive vocabulary for travelers, including transportation, accommodation, sightseeing, and cultural experiences. Perfect for planning trips or discussing travel experiences."
+  },
+  {
+    "name": "Business English",
+    "description": "Professional terminology used in corporate environments, meetings, presentations, and business correspondence. Essential for workplace communication and career advancement."
+  },
+  {
+    "name": "Academic English",
+    "description": "Formal vocabulary and expressions used in educational settings, research papers, and scholarly discussions. Designed for students and professionals in academic environments."
+  },
+  {
+    "name": "Health and Medicine",
+    "description": "Medical terminology covering common illnesses, body parts, treatments, and healthcare systems. Useful for doctor visits and discussing health-related topics."
+  },
+  {
+    "name": "Technology and Digital Life",
+    "description": "Modern vocabulary related to computers, internet, social media, and digital innovations. Essential for navigating today's tech-driven world."
+  },
+  {
+    "name": "Environment and Sustainability",
+    "description": "Terms related to climate change, conservation, renewable energy, and environmental protection. Important for discussions about our planet's future."
+  },
+  {
+    "name": "Arts and Culture",
+    "description": "Vocabulary covering music, literature, visual arts, theater, and cultural traditions from around the world. Enhances appreciation and discussion of creative expressions."
+  },
+  {
+    "name": "Food and Cuisine",
+    "description": "Culinary terms for ingredients, cooking methods, dining experiences, and international dishes. Perfect for food lovers and those exploring global cuisines."
+  },
+  {
+    "name": "Sports and Recreation",
+    "description": "Athletic terminology covering popular sports, fitness activities, outdoor adventures, and recreational pursuits. Ideal for sports fans and active lifestyles."
+  }
+]

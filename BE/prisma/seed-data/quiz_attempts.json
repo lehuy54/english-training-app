@@ -1,0 +1,86 @@
+[
+  {
+    "user_id": 2,
+    "content_type": "topic",
+    "content_id": 1,
+    "score": 8
+  },
+  {
+    "user_id": 2,
+    "content_type": "topic",
+    "content_id": 2,
+    "score": 7
+  },
+  {
+    "user_id": 2,
+    "content_type": "topic",
+    "content_id": 3,
+    "score": 9
+  },
+  {
+    "user_id": 3,
+    "content_type": "topic",
+    "content_id": 1,
+    "score": 10
+  },
+  {
+    "user_id": 3,
+    "content_type": "topic",
+    "content_id": 4,
+    "score": 6
+  },
+  {
+    "user_id": 3,
+    "content_type": "topic",
+    "content_id": 5,
+    "score": 8
+  },
+  {
+    "user_id": 4,
+    "content_type": "topic",
+    "content_id": 6,
+    "score": 9
+  },
+  {
+    "user_id": 4,
+    "content_type": "topic",
+    "content_id": 7,
+    "score": 7
+  },
+  {
+    "user_id": 5,
+    "content_type": "topic",
+    "content_id": 8,
+    "score": 10
+  },
+  {
+    "user_id": 5,
+    "content_type": "topic",
+    "content_id": 9,
+    "score": 8
+  },
+  {
+    "user_id": 2,
+    "content_type": "topic",
+    "content_id": 1,
+    "score": 8
+  },
+  {
+    "user_id": 2,
+    "content_type": "grammar",
+    "content_id": 1,
+    "score": 7
+  },
+  {
+    "user_id": 3,
+    "content_type": "topic",
+    "content_id": 2,
+    "score": 9
+  },
+  {
+    "user_id": 3,
+    "content_type": "grammar",
+    "content_id": 2,
+    "score": 6
+  }
+]

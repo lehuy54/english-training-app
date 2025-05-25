@@ -1,0 +1,19 @@
+# Ignore thư mục node_modules
+node_modules/
+
+# Ignore tệp .env và .env.bak
+.env
+.env.bak
+
+# Ignore thư mục build hoặc dist (nếu có)
+dist/
+build/
+
+# Ignore tệp cache hoặc config cục bộ
+.vscode/
+.cache/
+
+# Ignore tệp dockerignore (tùy chọn)
+.dockerignore
+
+# Ignore các tệp và thư mục khác (nếu có)

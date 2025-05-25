@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Tag Questions",
+    "content": "Tag questions are short questions added to the end of statements. They are used to confirm information or ask for agreement. The tag question uses the auxiliary verb from the main statement, but in the opposite form.\n\nExamples:\n- You like coffee, don't you?\n- She isn't coming, is she?\n- They have finished, haven't they?\n\nRules:\n1. If the main statement is positive, the tag is negative\n2. If the main statement is negative, the tag is positive\n3. The auxiliary verb in the tag matches the tense of the main statement",
+    "video_url": "https://example.com/videos/tag-questions"
+  },
+  {
+    "title": "Passive Voice",
+    "content": "The passive voice is used when the focus is on the action rather than who or what is performing the action. It is formed using a form of 'be' + past participle.\n\nExamples:\n- The book was written by Shakespeare\n- The house is being built\n- The project will be completed next week\n\nWhen to use passive voice:\n1. When the doer is unknown\n2. When the doer is obvious\n3. When the focus is on the action or result\n4. In formal writing",
+    "video_url": "https://example.com/videos/passive-voice"
+  },
+  {
+    "title": "Reported Speech",
+    "content": "Reported speech (also called indirect speech) is used to report what someone else said. It involves changing the tense, pronouns, and time expressions.\n\nExamples:\nDirect: \"I am happy\"\nReported: He said he was happy\n\nDirect: \"I will call you tomorrow\"\nReported: She said she would call me the next day\n\nKey changes:\n1. Present simple → Past simple\n2. Present continuous → Past continuous\n3. Will → Would\n4. Can → Could\n5. Pronouns change according to the new context",
+    "video_url": "https://example.com/videos/reported-speech"
+  },
+  {
+    "title": "Past Simple",
+    "content": "Học thì quá khứ đơn (Past Simple) để mô tả hành động đã xảy ra trong quá khứ.",
+    "video_url": "https://www.youtube.com/watch?v=example_video_id "
+  },
+  {
+    "title": "Active Voice",
+    "content": "Hiểu và sử dụng dạng chủ động (active voice) trong câu.",
+    "video_url": "https://www.youtube.com/watch?v=third_video_id "
+  },
+  {
+    "title": "Conditional Sentences",
+    "content": "Học cấu trúc câu điều kiện (conditional sentences).",
+    "video_url": "https://www.youtube.com/watch?v=fifth_video_id "
+  },
+  {
+    "title": "Comparatives and Superlatives",
+    "content": "Học cách so sánh (comparatives và superlatives) trong tiếng Anh.",
+    "video_url": "https://www.youtube.com/watch?v=sixth_video_id "
+  },
+  {
+    "title": "Modal Verbs",
+    "content": "Học các động từ trợ giúp (modal verbs) như can, could, may, might...",
+    "video_url": "https://www.youtube.com/watch?v=seventh_video_id "
+  }
+]

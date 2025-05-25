@@ -1,0 +1,1362 @@
+openapi: 3.0.0
+info:
+  title: English Training API
+  description: Tài liệu hóa API ứng dụng học tiếng Anh với xác thực JWT
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/api
+    description: Local server
+
+tags:
+  - name: Auth
+    description: Xác thực người dùng
+  - name: Users
+    description: Quản lý thông tin người dùng
+  - name: Topics
+    description: Quản lý chủ đề học tập
+  - name: Flashcards
+    description: Quản lý flashcard theo chủ đề
+  - name: QuizAttempts
+    description: Quản lý lần làm bài kiểm tra
+  - name: Progress
+    description: Theo dõi tiến độ học tập của người dùng
+  - name: SpeakingPractice
+    description: Quản lý bài luyện nói và hỗ trợ giao tiếp AI
+
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Đăng ký người dùng mới
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterInput"
+      responses:
+        "201":
+          description: Đăng ký thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserInfo"
+        "400":
+          description: Email đã tồn tại
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Đăng nhập để lấy JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginInput"
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  token:
+                    type: string
+        "400":
+          description: Thông tin đăng nhập sai
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Lấy danh sách người dùng (chỉ admin)
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserInfo"
+        "401":
+          description: Token không hợp lệ hoặc thiếu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+
+  /users/me:
+    get:
+      tags:
+        - Users
+      summary: Lấy thông tin người dùng đang đăng nhập
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          description: Token không hợp lệ hoặc thiếu
+        "500":
+          description: Lỗi server
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Lấy thông tin người dùng theo ID (chỉ admin)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "403":
+          description: Chỉ admin mới được truy cập
+        "404":
+          description: Người dùng không tồn tại
+    put:
+      tags:
+        - Users
+      summary: Cập nhật người dùng (chỉ admin)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdateInput"
+      responses:
+        "200":
+          description: Thành công
+        "403":
+          description: Chỉ admin mới được sửa
+        "404":
+          description: Người dùng không tồn tại
+    delete:
+      tags:
+        - Users
+      summary: Xóa người dùng (chỉ admin)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Thành công
+        "403":
+          description: Chỉ admin mới được xóa
+        "404":
+          description: Người dùng không tồn tại
+  /topics:
+    get:
+      tags:
+        - Topics
+      summary: Lấy danh sách chủ đề
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Topic"
+
+    post:
+      tags:
+        - Topics
+      summary: Tạo chủ đề mới
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TopicInput"
+      responses:
+        "201":
+          description: Tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Topic"
+
+  /topics/{id}:
+    get:
+      tags:
+        - Topics
+      summary: Lấy chi tiết chủ đề
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Topic"
+        "404":
+          description: Không tìm thấy chủ đề
+
+    put:
+      tags:
+        - Topics
+      summary: Cập nhật chủ đề
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TopicInput"
+      responses:
+        "200":
+          description: Cập nhật thành công
+
+    delete:
+      tags:
+        - Topics
+      summary: Xóa chủ đề
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Xóa thành công
+
+  /topics/{topicId}/flashcards:
+    get:
+      tags:
+        - Flashcards
+      summary: Lấy flashcards theo chủ đề
+      parameters:
+        - name: topicId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Flashcard"
+
+  /flashcards:
+    post:
+      tags:
+        - Flashcards
+      summary: Tạo flashcard mới
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FlashcardInput"
+      responses:
+        "201":
+          description: Tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Flashcard"
+
+  /flashcards/{id}:
+    put:
+      tags:
+        - Flashcards
+      summary: Cập nhật flashcard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FlashcardInput"
+      responses:
+        "200":
+          description: Cập nhật thành công
+
+    delete:
+      tags:
+        - Flashcards
+      summary: Xóa flashcard
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Xóa thành công
+  /grammar-lessons:
+    get:
+      tags: [Grammar Lessons]
+      summary: Lấy danh sách bài học
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GrammarLesson"
+
+    post:
+      tags: [Grammar Lessons]
+      security:
+        - bearerAuth: []
+      summary: Tạo bài học mới
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrammarLessonInput"
+      responses:
+        "201":
+          description: Tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GrammarLesson"
+
+  /grammar-lessons/{id}:
+    get:
+      tags: [Grammar Lessons]
+      summary: Lấy chi tiết bài học
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GrammarLesson"
+
+    put:
+      tags: [Grammar Lessons]
+      security:
+        - bearerAuth: []
+      summary: Cập nhật bài học
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GrammarLessonInput"
+      responses:
+        "200":
+          description: Cập nhật thành công
+
+    delete:
+      tags: [Grammar Lessons]
+      security:
+        - bearerAuth: []
+      summary: Xóa bài học
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Xóa thành công
+
+  /questions:
+    get:
+      tags: [Questions]
+      summary: Lấy danh sách câu hỏi
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Question"
+                  
+  /questions/content:
+    get:
+      tags:
+        - Questions
+      summary: Lấy câu hỏi theo loại nội dung và id
+      parameters:
+        - in: query
+          name: type
+          required: true
+          schema:
+            type: string
+            enum: [topic, grammar]
+          description: Loại nội dung (topic hoặc grammar)
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID của chủ đề hoặc bài học ngữ pháp
+      responses:
+        "200":
+          description: Lấy danh sách câu hỏi thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Question"
+        "400":
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Missing required parameters: type, id"
+        "404":
+          description: Không tìm thấy chủ đề hoặc bài học
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Topic not found"
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Internal server error"
+
+    post:
+      tags: [Questions]
+      security:
+        - bearerAuth: []
+      summary: Tạo câu hỏi mới
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuestionInput"
+      responses:
+        "201":
+          description: Tạo thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Question"
+
+  /questions/{id}:
+    get:
+      tags: [Questions]
+      summary: Lấy chi tiết câu hỏi
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Chi tiết câu hỏi
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Question"
+    put:
+      tags: [Questions]
+      security:
+        - bearerAuth: []
+      summary: Cập nhật câu hỏi
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuestionInput"
+      responses:
+        "200":
+          description: Cập nhật thành công
+    delete:
+      tags: [Questions]
+      security:
+        - bearerAuth: []
+      summary: Xóa câu hỏi
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Xóa thành công
+  /quiz-attempts:
+    post:
+      tags:
+        - QuizAttempts
+      summary: Tạo lần làm bài kiểm tra mới
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateQuizAttemptInput"
+      responses:
+        "201":
+          description: Tạo thành công
+        "500":
+          description: Lỗi máy chủ
+  /quiz-attempts/{attemptId}/answers:
+    post:
+      tags:
+        - QuizAttempts
+      summary: Nộp câu trả lời cho bài kiểm tra và chấm điểm
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: attemptId
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID của lần làm bài
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubmitQuizAnswersInput"
+      responses:
+        "200":
+          description: Nộp bài thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      score:
+                        type: number
+                        example: 80
+                      total_questions:
+                        type: integer
+                        example: 10
+                      correct_answers:
+                        type: integer
+                        example: 8
+        "400":
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Invalid answers format"
+        "401":
+          description: Chưa xác thực
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized"
+        "404":
+          description: Không tìm thấy lần làm bài
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Quiz attempt not found"
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Internal server error"
+  
+  # API cho Speaking Practice
+  /speaking-practice:
+    post:
+      tags:
+        - SpeakingPractice
+      summary: Tạo bài luyện nói mới
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateSpeakingPracticeInput"
+      responses:
+        "201":
+          description: Tạo bài luyện nói thành công
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SpeakingPracticeResponse"
+        "400":
+          description: Dữ liệu không hợp lệ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Content is required"
+        "401":
+          description: Chưa xác thực
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized"
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Internal server error"
+
+  /speaking-practice/history:
+    get:
+      tags:
+        - SpeakingPractice
+      summary: Lấy lịch sử luyện nói của người dùng
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Lấy lịch sử thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SpeakingPracticeHistory"
+        "401":
+          description: Chưa xác thực
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized"
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Internal server error"
+
+  /speaking-practice/{id}:
+    get:
+      tags:
+        - SpeakingPractice
+      summary: Lấy chi tiết một bài luyện nói
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID của bài luyện nói
+      responses:
+        "200":
+          description: Lấy chi tiết thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/SpeakingPracticeDetail"
+        "400":
+          description: ID không hợp lệ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid practice ID"
+        "401":
+          description: Chưa xác thực
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Unauthorized"
+        "403":
+          description: Không có quyền truy cập
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Forbidden"
+        "404":
+          description: Không tìm thấy bài luyện nói
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Practice not found"
+        "500":
+          description: Lỗi server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: "Internal server error"
+  /quiz-attempts/{id}/details:
+    get:
+      tags:
+        - QuizAttempts
+      summary: Lấy chi tiết lần làm bài kiểm tra (kèm tên nội dung)
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Trả về thông tin chi tiết
+        "404":
+          description: Không tìm thấy
+  /quiz-attempts/history/users/{userId}:
+    get:
+      tags:
+        - QuizAttempts
+      summary: Lấy lịch sử làm bài của người dùng
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Trả về danh sách lịch sử
+        "500":
+          description: Lỗi máy chủ
+  /progress/users/{userId}/stats/{contentType}:
+    get:
+      tags:
+        - Progress
+      summary: Lấy tiến độ học của người dùng theo loại nội dung
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: contentType
+          required: true
+          schema:
+            type: string
+            enum: [topic, grammar]
+      responses:
+        "200":
+          description: Trả về tiến độ học
+        "500":
+          description: Lỗi máy chủ
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    RegisterInput:
+      type: object
+      properties:
+        email:
+          type: string
+          example: "user@example.com"
+        display_name:
+          type: string
+          example: "John Doe"
+        password:
+          type: string
+          example: "password123"
+        role:
+          type: string
+          enum: [user, admin]
+          example: "user"
+      required:
+        - email
+        - display_name
+        - password
+
+    LoginInput:
+      type: object
+      properties:
+        email:
+          type: string
+          example: "user@example.com"
+        password:
+          type: string
+          example: "password123"
+      required:
+        - email
+        - password
+
+    UserInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        display_name:
+          type: string
+        role:
+          type: string
+        registered_at:
+          type: string
+          format: date-time
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        display_name:
+          type: string
+        role:
+          type: string
+        registered_at:
+          type: string
+          format: date-time
+
+    UserUpdateInput:
+      type: object
+      properties:
+        email:
+          type: string
+        display_name:
+          type: string
+        role:
+          type: string
+          enum: [user, admin]
+    Topic:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    TopicInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - name
+
+    Flashcard:
+      type: object
+      properties:
+        id:
+          type: integer
+        topic_id:
+          type: integer
+        vocabulary:
+          type: string
+        phonetics:
+          type: string
+        vietnamese_meaning:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        example:
+          type: string
+
+    FlashcardInput:
+      type: object
+      properties:
+        topic_id:
+          type: integer
+        vocabulary:
+          type: string
+        phonetics:
+          type: string
+        vietnamese_meaning:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        example:
+          type: string
+      required:
+        - topic_id
+        - vocabulary
+
+    GrammarLesson:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        video_url:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+
+    GrammarLessonInput:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        video_url:
+          type: string
+          nullable: true
+      required:
+        - title
+        - content
+
+    Question:
+      type: object
+      properties:
+        id:
+          type: integer
+        content_type:
+          type: string
+        content_id:
+          type: integer
+        content_name:
+          type: string
+          nullable: true
+        question_text:
+          type: string
+        option1:
+          type: string
+        option2:
+          type: string
+        option3:
+          type: string
+        option4:
+          type: string
+        correct_answer:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+
+    QuestionInput:
+      type: object
+      properties:
+        content_type:
+          type: string
+        content_id:
+          type: integer
+        content_name:
+          type: string
+          nullable: true
+        question_text:
+          type: string
+        option1:
+          type: string
+        option2:
+          type: string
+        option3:
+          type: string
+        option4:
+          type: string
+        correct_answer:
+          type: integer
+      required:
+        - content_type
+        - content_id
+        - question_text
+        - option1
+        - option2
+        - option3
+        - option4
+        - correct_answer
+    CreateQuizAttemptInput:
+      type: object
+      properties:
+        content_type:
+          type: string
+          example: topic
+        content_id:
+          type: integer
+          example: 1
+      required:
+        - content_type
+        - content_id
+
+    SubmitQuizAnswersInput:
+      type: object
+      properties:
+        answers:
+          type: array
+
+    # Schema cho Speaking Practice
+    CreateSpeakingPracticeInput:
+      type: object
+      properties:
+        context:
+          type: string
+          description: Ngữ cảnh hoặc tình huống cho bài luyện nói
+          example: "Đang phỏng vấn xin việc"
+        tone:
+          type: string
+          description: Giọng điệu (trang trọng, thân mật, v.v.)
+          example: "Trang trọng"
+        audience:
+          type: string
+          description: Đối tượng người nghe
+          example: "Nhà tuyển dụng"
+        content:
+          type: string
+          description: Nội dung yêu cầu từ người dùng
+          example: "Xin vui lòng tạo một đoạn hội thoại phỏng vấn xin việc cho vị trí kỹ sư phần mềm"
+      required:
+        - content
+
+    SpeakingPracticeResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            user_id:
+              type: integer
+              example: 42
+            context:
+              type: string
+              example: "Đang phỏng vấn xin việc"
+            tone:
+              type: string
+              example: "Trang trọng"
+            audience:
+              type: string
+              example: "Nhà tuyển dụng"
+            content:
+              type: string
+              example: "Xin vui lòng tạo một đoạn hội thoại phỏng vấn xin việc cho vị trí kỹ sư phần mềm"
+            ai_response:
+              type: string
+              example: "Interviewer: Good morning! Thank you for coming in today. Can you tell me a bit about your experience with software development?\n\nCandidate: Good morning! Thank you for having me. I've been working in software development for five years, primarily focused on web applications using React and Node.js..."
+            created_at:
+              type: string
+              format: date-time
+              example: "2025-05-22T14:30:45Z"
+
+    SpeakingPracticeHistory:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 42
+        context:
+          type: string
+          example: "Đang phỏng vấn xin việc"
+        content:
+          type: string
+          example: "Xin vui lòng tạo một đoạn hội thoại phỏng vấn xin việc cho vị trí kỹ sư phần mềm"
+        created_at:
+          type: string
+          format: date-time
+          example: "2025-05-22T14:30:45Z"
+
+    SpeakingPracticeDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 42
+        context:
+          type: string
+          example: "Đang phỏng vấn xin việc"
+        tone:
+          type: string
+          example: "Trang trọng"
+        audience:
+          type: string
+          example: "Nhà tuyển dụng"
+        content:
+          type: string
+          example: "Xin vui lòng tạo một đoạn hội thoại phỏng vấn xin việc cho vị trí kỹ sư phần mềm"
+        ai_response:
+          type: string
+          example: "Interviewer: Good morning! Thank you for coming in today. Can you tell me a bit about your experience with software development?\n\nCandidate: Good morning! Thank you for having me. I've been working in software development for five years, primarily focused on web applications using React and Node.js..."
+        created_at:
+          type: string
+          format: date-time
+          example: "2025-05-22T14:30:45Z"
+          items:
+            type: object
+            properties:
+              question_id:
+                type: integer
+              selected_option:
+                type: integer
+            required:
+              - question_id
+              - selected_option

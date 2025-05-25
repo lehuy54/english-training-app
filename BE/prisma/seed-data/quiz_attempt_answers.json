@@ -1,0 +1,42 @@
+[
+  {
+    "attempt_id": 1,
+    "question_id": 1,
+    "selected_option": 1
+  },
+  {
+    "attempt_id": 1,
+    "question_id": 2,
+    "selected_option": 2
+  },
+  {
+    "attempt_id": 2,
+    "question_id": 7,
+    "selected_option": 2
+  },
+  {
+    "attempt_id": 2,
+    "question_id": 8,
+    "selected_option": 1
+  },
+  {
+    "attempt_id": 3,
+    "question_id": 3,
+    "selected_option": 3
+  },
+  {
+    "attempt_id": 3,
+    "question_id": 4,
+    "selected_option": 2
+  },
+  {
+    "attempt_id": 4,
+    "question_id": 9,
+    "selected_option": 2
+  },
+  {
+    "attempt_id": 4,
+    "question_id": 10,
+    "selected_option": 1
+  }
+]
