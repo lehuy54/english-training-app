@@ -15,8 +15,8 @@ type JsonObject = Record<string, any>;
 
 
 // Load Swagger Docs từ file yaml
-const swaggerDocumentYaml = fs.readFileSync(path.resolve(config.swaggerSpecPath), 'utf8');
-const swaggerDocumentJson = yaml.load(swaggerDocumentYaml) as JsonObject;
+// const swaggerDocumentYaml = fs.readFileSync(path.resolve(config.swaggerSpecPath), 'utf8');
+// const swaggerDocumentJson = yaml.load(swaggerDocumentYaml) as JsonObject;
 
 const app = express();
 
@@ -52,11 +52,11 @@ app.use(`${config.baseApiPath}/progress`, progressRoute);
 app.use(`${config.baseApiPath}/speaking-practice`, speakingRoute);
 
 // Swagger Docs
-app.use(
-  config.swaggerRoute,
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocumentJson)
-);
+// app.use(
+//   config.swaggerRoute,
+//   swaggerUi.serve,
+//   swaggerUi.setup(swaggerDocumentJson)
+// );
 
 // Hàm khởi động server
 async function startServer() {
