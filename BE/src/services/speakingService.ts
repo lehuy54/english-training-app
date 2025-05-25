@@ -43,7 +43,7 @@ export const generateAIResponse = async (
     người tôi đang muốn nói đến là: ${audience}
     nội dung cụ thể tôi muốn nói: "${content}".
 
-    Hãy response lại câu trả lời cho tôi bằng tiếng Anh và Lưu ý đừng phản hồi nó dưới dạng mail, hãy phản hồi nó dưới dạng như một câu trả lời nằm trong dấu ngoặc kép
+    Hãy chuyển nội dung cụ thể tôi muốn nói bằng TIẾNG ANH với các thông tin đã được cung cấp trong dấu ngoặc kép
     `;
 
     // Gọi API Ollama
